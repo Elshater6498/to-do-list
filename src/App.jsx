@@ -10,16 +10,26 @@ function App() {
   };
   return (
     <div className="flex flex-col justify-center items-center border-4 border-gray-600 max-w-2xl mx-auto my-10 p-4">
-      <div className="">
-        <h1 className="text-2xl font-bold uppercase border-2 border-black rounded-md bg-gray-400 p-1 px-5 text-center">to do list</h1>
-        <ul className="list-disc px-8 border my-2">
+      <h1 className="text-2xl font-bold uppercase border-2 border-black rounded-md bg-gray-400 p-1 px-5 text-center">
+        to do list
+      </h1>
+      <div className="max-w-xl mx-auto">
+        <ul className="px-8 my-2">
           {todos.map((item) => {
-            return <li className="">{item}</li>;
+            return <li className="hand text-xl w-full break-words">{item}</li>;
           })}
         </ul>
-        <div className="flex gap-3">
-          <input ref={inputRef} type="text" className="border-2 rounded-md select-none text-2xl placeholder:px-1 " placeholder="write some thing..." />
-          <button onClick={handelAddToDo} className="border px-4 rounded-md">
+        <div className="flex gap-3 justify-center">
+          <input
+            ref={inputRef}
+            type="text"
+            className="border-2 border-black rounded-md outline-none bg-gray-400 text-2xl placeholder:px-1 placeholder:text-white"
+            placeholder="write some thing...."
+          />
+          <button
+            onClick={handelAddToDo}
+            className="border-2 border-black px-4 rounded-md bg-green-500"
+          >
             add
           </button>
         </div>
