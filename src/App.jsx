@@ -5,9 +5,18 @@ function App() {
   const inputRef = useRef();
   const handelAddToDo = () => {
     const text = inputRef.current.value;
-    setTodos([...todos, text]);
+    const newText = { completed: false, text };
+    setTodos([...todos, newText]);
     inputRef.current.value = "";
   };
+
+  const handelItemDone = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].completed = !newTodos[index].completed;
+    setTodos(newTodos);
+  };
+  console.log(todos);
+
   return (
     <div className="flex flex-col justify-center items-center border-4 border-gray-600 max-w-2xl mx-auto my-10 p-4">
       <h1 className="text-2xl font-bold uppercase border-2 border-black rounded-md bg-gray-400 p-1 px-5 text-center">
@@ -15,8 +24,16 @@ function App() {
       </h1>
       <div className="max-w-xl mx-auto">
         <ul className="px-8 my-2">
-          {todos.map((item) => {
-            return <li className="hand text-xl w-full break-words">{item}</li>;
+          {todos.map(({ text }, index) => {
+            return (
+              <li
+                onClick={() => handelItemDone(index)}
+                className="hand text-xl w-full 
+            break-words"
+              >
+                {text}
+              </li>
+            );
           })}
         </ul>
         <div className="flex gap-3 justify-center">
