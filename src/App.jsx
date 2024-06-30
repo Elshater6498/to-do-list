@@ -15,7 +15,6 @@ function App() {
     newTodos[index].completed = !newTodos[index].completed;
     setTodos(newTodos);
   };
-  console.log(todos);
 
   return (
     <div className="flex flex-col justify-center items-center border-4 border-gray-600 max-w-2xl mx-auto my-10 p-4">
@@ -24,12 +23,12 @@ function App() {
       </h1>
       <div className="max-w-xl mx-auto">
         <ul className="px-8 my-2">
-          {todos.map(({ text }, index) => {
+          {todos.map(({ text,completed }, index) => {
             return (
               <li
                 onClick={() => handelItemDone(index)}
-                className="hand text-xl w-full 
-            break-words"
+                className={`hand text-xl w-full 
+            break-words ${completed?"line-through":""}`}
               >
                 {text}
               </li>
