@@ -25,13 +25,15 @@ function App() {
         <ul className="px-8 my-2">
           {todos.map(({ text,completed }, index) => {
             return (
-              <li
-                onClick={() => handelItemDone(index)}
-                className={`hand text-xl w-full 
-            break-words ${completed?"line-through":""}`}
-              >
-                {text}
-              </li>
+              <div className="flex justify-between items-center rounded-md">
+                <li
+                  onClick={() => handelItemDone(index)}
+                  className={`hand text-xl w-full break-words select-none cursor-pointer border mx-5 ${completed?"line-through":""}`}
+                >
+                  {text}
+                </li>
+                <span className="bg-red-400 px-2 rounded-md text-sm cursor-pointer">X</span>
+              </div>
             );
           })}
         </ul>
