@@ -24,7 +24,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="h-screen flex justify-center items-center">
       <div className="flex flex-col justify-center items-center border-4 border-red-600 max-w-2xl mx-auto p-4">
         <h1 className="text-2xl font-bold uppercase border-2 border-black rounded-md bg-gray-400 p-1 px-5 text-center w-full">
           to do list
@@ -37,7 +37,7 @@ function App() {
                 <div className="flex justify-between gap-5 items-center rounded-md border-2 px-1 my-2">
                   <li
                     onClick={() => handelItemDone(index)}
-                    className={`list-disc text-xl break-words select-none cursor-pointer max-w-sm my-1 ${
+                    className={`list-disc text-xl break-words select-none cursor-pointer max-w-sm my-1 w-full ${
                       completed ? "line-through" : ""
                     }`}
                   >
@@ -69,7 +69,7 @@ function App() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
