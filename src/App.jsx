@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-
+import { IoIosCloseCircle } from "react-icons/io";
 function App() {
   const [todos, setTodos] = useState([]);
   const inputRef = useRef();
@@ -9,7 +9,7 @@ function App() {
     setTodos([...todos, newText]);
     inputRef.current.value = "";
   };
-
+  
   const handelItemDone = (index) => {
     const newTodos = [...todos];
     newTodos[index].completed = !newTodos[index].completed;
@@ -21,32 +21,45 @@ function App() {
       <h1 className="text-2xl font-bold uppercase border-2 border-black rounded-md bg-gray-400 p-1 px-5 text-center">
         to do list
       </h1>
-      <div className="max-w-xl mx-auto">
-        <ul className="px-8 my-2">
-          {todos.map(({ text,completed }, index) => {
+      <div className="max-w-lg min-w-[32rem] flex flex-col justify-center items-center bg-gray-300 rounded-lg p-5 my-3">
+        {/* items */}
+        <ul className="my-2">
+          {todos.map(({ text, completed }, index) => {
             return (
-              <div className="flex justify-between items-center rounded-md">
+              <div className="flex justify-center items-center gap-5 items-center rounded-md border-2 px-1 my-2">
                 <li
                   onClick={() => handelItemDone(index)}
-                  className={`hand text-xl w-full break-words select-none cursor-pointer border mx-5 ${completed?"line-through":""}`}
+                  className={`list-disc text-xl break-words select-none cursor-pointer w-full max-w-xs my-1 ${
+                    completed ? "line-through" : ""
+                  }`}
                 >
                   {text}
                 </li>
-                <span className="bg-red-400 px-2 rounded-md text-sm cursor-pointer">X</span>
+                <IoIosCloseCircle className="text-red-600 text-lg " />
               </div>
             );
           })}
         </ul>
-        <div className="flex gap-3 justify-center">
+        {/* input */}
+        {/* <input
+            ref={inputRef}
+            type="text"
+            id="simple-search"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Search branch name..."
+            required
+          /> */}
+        <div className="flex gap-3 justify-center w-full">
           <input
             ref={inputRef}
             type="text"
-            className="border-2 border-black rounded-md outline-none bg-gray-400 text-2xl placeholder:px-1 placeholder:text-white"
-            placeholder="write some thing...."
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            placeholder="Search branch name..."
+            required
           />
           <button
             onClick={handelAddToDo}
-            className="border-2 border-black px-4 rounded-md bg-green-500"
+            className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
           >
             add
           </button>
